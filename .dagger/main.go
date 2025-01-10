@@ -50,7 +50,7 @@ func (m *Snippetbox) Build(
 
 	// create empty directory to put build artifacts
 	outputs := dag.Directory()
-	fmt.Sprintf("%s", outputs)
+	fmt.Sprintf("This is the empty directory: %s", outputs)
 
 	// run build for each combination
 	for _, goos := range gooses {
