@@ -116,7 +116,7 @@ func (m *Snippetbox) Publish(
 
 		return fmt.Sprintf("Published: %s", addr), nil
 	} else {
-		return fmt.Sprintf("Skipped Publishing: %s", addr), nil
+		return fmt.Sprintf("Skipped Publishing %s", commit), nil
 	}
 }
 
