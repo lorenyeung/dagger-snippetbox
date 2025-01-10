@@ -107,23 +107,16 @@ func (m *Snippetbox) Publish(
 	if token != nil {
 		ctr := m.base().
 			WithDirectory("/src", m.Src).
-			WithRegistryAuth("docker.io", "levlaz", token)
+			WithRegistryAuth("docker.io", "lorenharness", token)
 
-		addr, err := ctr.Publish(ctx, fmt.Sprintf("levlaz/snippetbox:%s", commit))
+		addr, err := ctr.Publish(ctx, fmt.Sprintf("lorenharness/dagger-snippetbox:%s", commit))
 		if err != nil {
 			return "", fmt.Errorf("%s", err)
 		}
 
 		return fmt.Sprintf("Published: %s", addr), nil
 	} else {
-		addr, err := m.base().
-			WithDirectory("/src", m.Src).
-			Publish(ctx, fmt.Sprintf("ttl.sh/levlaz/snippetbox:%s", commit))
-		if err != nil {
-			return "", fmt.Errorf("%s", err)
-		}
-
-		return fmt.Sprintf("Published: %s", addr), nil
+		return fmt.Sprintf("Skipped Publishing: %s", addr), nil
 	}
 }
 
